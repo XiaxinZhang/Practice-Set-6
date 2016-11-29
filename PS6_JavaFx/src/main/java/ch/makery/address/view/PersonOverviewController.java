@@ -163,7 +163,7 @@ public class PersonOverviewController {
             	PersonDAL.updatePerson(selectedPerson);
                 showPersonDetails(selectedPerson);
                 mainApp.RefreshPersonTable();
-            }
+            } 
 
         } else {
             // Nothing selected.
