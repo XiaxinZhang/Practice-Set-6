@@ -84,6 +84,9 @@ public class PersonEditDialogController {
         birthdayField.setText(DateUtil.format(DateUtil.parse(person.getBirthday().toString())));
         birthdayField.setPromptText("dd.mm.yyyy");
         
+        //Calling the addPerson method
+        PersonDAL.updatePerson(person);
+        
     }
 
     /**

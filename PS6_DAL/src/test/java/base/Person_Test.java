@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.UUID;
+import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -22,7 +23,7 @@ import javafx.beans.property.StringProperty;
 public class Person_Test {
 		
 	private static PersonDomainModel person1;
-	private static UUID person1UUID = UUID.randomUUID();			
+	private static UUID person1UUID = UUID.randomUUID();
 	
 	@BeforeClass
 	public static void personInstance() throws Exception{
@@ -49,6 +50,34 @@ public class Person_Test {
 		person1.setStreet("702 Stone Gate Blvd");
 		person1.setPostalCode(21921);
 		
+	}
+	
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+	
+	@Test
+	public void test_addStudent() {
+		assertEquals(person1.getPersonID(), PersonDAL.getPerson(person1.getPersonID()).getPersonID());
+	}
+	
+	@Test
+	public void test_updateStudent() {
+		int newPostalCode = 19716;
+		person1.setPostalCode(newPostalCode);
+		PersonDAL.updatePerson(person1);
+		assertEquals(PersonDAL.getPerson(person1.getPersonID()).getPostalCode(), newPostalCode);
+	}
+	
+	@Test
+	public void test_deleteStudent() {
+		assertEquals(person1.getPersonID(), PersonDAL.getPerson(person1.getPersonID()).getPersonID());
+		PersonDAL.deletePerson(person1.getPersonID());
+		assertEquals(PersonDAL.getPerson(person1.getPersonID()), null);
 	}
 	
 	
